@@ -29,7 +29,7 @@ local plugins = {
   },
   "nvimdev/lspsaga.nvim", --加强code action
 
-      -- 自动补全引擎框架,提供不同的片段源
+  -- 自动补全引擎框架,提供不同的片段源
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-nvim-lsp", --源于语言服务工程片段源，依赖nvim-lspconfig
   "hrsh7th/cmp-buffer",--通过文本解析得到片段源
@@ -45,11 +45,15 @@ local plugins = {
   "numToStr/Comment.nvim", -- gcc和gc注释
   "windwp/nvim-autopairs", -- 自动补全括号
 
+  "nvimtools/none-ls.nvim", --格式化
+
+  --bufferline
+  "moll/vim-bbye", --bufferline 角标操作命令支持，bdelete
   "akinsho/bufferline.nvim", -- buffer分割线
   "lewis6991/gitsigns.nvim", -- 左则git提示
 
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1', -- 文件检索
+    'nvim-telescope/telescope.nvim', -- 文件检索
     dependencies = { {'nvim-lua/plenary.nvim'} } -- requires要改为dependencies
   },
 
