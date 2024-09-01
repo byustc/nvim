@@ -36,8 +36,7 @@ keymap.set('n', 'sc', '<C-w>c', opt)
 -- 关闭其他窗口 (close other)
 keymap.set('n', 'so', '<C-w>o', opt)
 
-
--- Alt + hjkl 在窗口之间跳转
+-- w + hjkl 在窗口之间跳转
 keymap.set('n', 'wh', '<c-w>h', opt)
 keymap.set('n', 'wj', '<C-w>j', opt)
 keymap.set('n', 'wk', '<C-w>k', opt)

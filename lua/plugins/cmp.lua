@@ -24,6 +24,10 @@ end
 -- load vscode snippet(friendly-snippet)
 require("luasnip.loaders.from_vscode").lazy_load()
 
+local types = require 'cmp.types'
+local str = require 'cmp.utils.str'
+
+
 cmp.setup({
     --指定cmp引擎
     snippet = {
@@ -49,12 +53,35 @@ cmp.setup({
 
     -- 使用lspkind-nvim显示类型图标
     formatting = {
+        fields = { 'menu', 'abbr' },
+        completion = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, scrollbar = "║" },
+		documentation = {
+			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			scrollbar = "║",
+		},
         format = lspkind.cmp_format({
+            mode = "symbol",
+            ellipsis_char = "...",
             with_text = true, -- do not show text alongside icons
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             before = function(entry, vim_item)
                 -- Source 显示提示来源
                 vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
+
+                -- Get the full snippet (and only keep first line)
+				local word = entry:get_insert_text()
+				if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
+					word = vim.lsp.util.parse_snippet(word)
+				end
+				word = str.oneline(word)
+				if
+					entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet
+					and string.sub(vim_item.abbr, -1, -1) == "~"
+				then
+					word = word .. "~"
+				end
+				vim_item.abbr = word
+
                 return vim_item
             end
         })
