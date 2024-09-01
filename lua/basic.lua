@@ -82,3 +82,5 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
 vim.opt.foldlevel = 99
+-- 启用系统剪粘板
+vim.opt.clipboard:append("unnamedplus")

@@ -24,6 +24,7 @@ require("lazy").setup({
 	-- file tree
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "kyazdani42/nvim-tree.lua", event = "VimEnter" },
+    --bufferline 并添加角标支持
 	{ "akinsho/bufferline.nvim", dependencies = { "moll/vim-bbye" } },
 	{ "nvim-lualine/lualine.nvim" },
 	{ "arkav/lualine-lsp-progress" },
@@ -76,31 +77,31 @@ require("lazy").setup({
 			},
 		},
 	},
-	-- telescope
+	-- telescope file search
 	{ "nvim-telescope/telescope.nvim" },
 	"LinArcX/telescope-env.nvim",
-	-- 自动补全
+	-- 自动补全括号
 	{ "windwp/nvim-autopairs" },
 
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	-- dashboard
 	{ "nvimdev/dashboard-nvim", event = "VimEnter", dependencies = { { "nvim-tree/nvim-web-devicons" } } },
 	"ahmedkhalf/project.nvim",
-
+    -- 语法高亮
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	-- LSP
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
-	{ "nvimdev/lspsaga.nvim", event = "BufEnter" },
+	{ "nvimdev/lspsaga.nvim", event = "BufEnter" }, --加强渲染code action
 	-- terminal
 	"voldikss/vim-floaterm",
 	-- format
 	{ "nvimtools/none-ls.nvim", dependencies = "nvim-lua/plenary.nvim" },
 	-- 补全
 	"hrsh7th/nvim-cmp",
-	"hrsh7th/vim-vsnip",
-	"hrsh7th/cmp-vsnip",
+	"hrsh7th/vim-vsnip", --snippets引擎
+	"hrsh7th/cmp-vsnip", --nvim-cmp和vim-vsnip的桥梁
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
@@ -109,8 +110,8 @@ require("lazy").setup({
 
 	"HiPhish/rainbow-delimiters.nvim",
 	-- 常见片段
-	"rafamadriz/friendly-snippets",
-	"onsails/lspkind-nvim",
+	"rafamadriz/friendly-snippets", --提示常见代码
+	"onsails/lspkind-nvim", --代码类型提示
 	-- git
 	"lewis6991/gitsigns.nvim",
 	-- dap

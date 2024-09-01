@@ -4,6 +4,9 @@ local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
 local opt = { noremap = true, silent = true }
 
+
+map("i","jj","<ESC>", opt)
+
 -- 取消 s 默认功能
 map("n", "s", "", opt)
 -- windows 分屏快捷键
@@ -13,24 +16,20 @@ map("n", "sh", ":sp<CR>", opt)
 map("n", "sc", "<C-w>c", opt)
 -- 关闭其他
 map("n", "so", "<C-w>o", opt)
--- Alt + hjkl  窗口之间跳转
-map("n", "<A-h>", "<C-w>h", opt)
-map("n", "<A-j>", "<C-w>j", opt)
-map("n", "<A-k>", "<C-w>k", opt)
-map("n", "<A-l>", "<C-w>l", opt)
+-- w + hjkl  窗口之间跳转
+map("n", "ww", "<C-w>w", opt)
+map("n", "wh", "<C-w>h", opt)
+map("n", "wj", "<C-w>j", opt)
+map("n", "wk", "<C-w>k", opt)
+map("n", "wl", "<C-w>l", opt)
 
 -- 左右比例控制
-map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
-map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
-map("n", "s,", ":vertical resize -20<CR>", opt)
-map("n", "s.", ":vertical resize +20<CR>", opt)
--- 上下比例
-map("n", "sj", ":resize +10<CR>", opt)
-map("n", "sk", ":resize -10<CR>", opt)
-map("n", "<C-Down>", ":resize +2<CR>", opt)
-map("n", "<C-Up>", ":resize -2<CR>", opt)
+map("n", "<C-Left>", ":vertical resize -6<CR>", opt)
+map("n", "<C-Right>", ":vertical resize +6<CR>", opt)
+map("n", "<C-Down>", ":resize +6<CR>", opt)
+map("n", "<C-Up>", ":resize -6<CR>", opt)
 -- 等比例
-map("n", "s=", "<C-w>=", opt)
+map("n", "<C-=>", "<C-w>=", opt)
 
 -- Terminal相关
 map("n", "<leader>t", "<cmd>Lspsaga term_toggle<CR>", opt)
@@ -47,8 +46,8 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 map("n", "<C-j>", "4j", opt)
 map("n", "<C-k>", "4k", opt)
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
-map("n", "<C-u>", "9k", opt)
-map("n", "<C-d>", "9j", opt)
+map("n", "<C-u>", "10k", opt)
+map("n", "<C-d>", "10j", opt)
 
 -- 在visual 模式里粘贴不要复制
 map("v", "p", '"_dP', opt)
@@ -67,7 +66,7 @@ map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
 --"moll/vim-bbye"
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
+map("n", "<leader>w", ":Bdelete!<CR>", opt) --关闭当前buffer
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
@@ -77,10 +76,12 @@ map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 map("n", "<C-p>", ":Telescope find_files<CR>", opt)
 -- 全局搜索
 map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+map("n", "<C-b>", ":Telescope buffers<CR>", opt)
 
 -- nvim-tree
--- alt + m 键打开关闭tree
-map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
+-- leader + g 键打开关闭tree
+map("n", "<leader>g", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>v", ":NvimTreeFindFile<CR>", opt)
 
 -- nvim-dap
 map("n", "<leader>bb", ":GoBreakToggle<CR>", opt)
@@ -159,9 +160,9 @@ end
 pluginKeys.cmp = function(cmp)
 	return {
 		-- 出现补全
-		["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		-- 取消
-		["<A-,>"] = cmp.mapping({
+		["<C-,>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),

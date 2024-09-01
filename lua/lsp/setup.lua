@@ -1,7 +1,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
 	automatic_installation = true,
-	ensure_installed = { "lua_ls", "rust_analyzer" },
+	ensure_installed = { "lua_ls", "gopls", "rust_analyzer" },
 })
 
 function LspKeybind(client, bufnr)
