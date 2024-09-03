@@ -28,6 +28,8 @@ require("lazy").setup({
 	{ "akinsho/bufferline.nvim", dependencies = { "moll/vim-bbye" } },
 	{ "nvim-lualine/lualine.nvim" },
 	{ "arkav/lualine-lsp-progress" },
+    -- surrounding
+    {"kylechui/nvim-surround"},
 	-- flash
 	{
 		"folke/flash.nvim",
